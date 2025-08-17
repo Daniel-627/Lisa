@@ -23,7 +23,7 @@ export default function Navbar() {
         className="flex items-center justify-between px-4 py-2"
       >
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold">
+        <Link href="/" className="text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
           Lisa PMS
         </Link>
 
@@ -50,12 +50,12 @@ export default function Navbar() {
       >
         {/* Nav links */}
         <div className="flex gap-6">
-          <Link href="/">Home</Link>
-          <Link href="/about">About Us</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/staff">Staff/Doctors</Link>
-          <Link href="/contact">Contact Us</Link>
-          <Link href="/blog">Blog</Link>
+          <Link href="/" className="text-blue-600 hover:text-blue-700 transition-colors">Home</Link>
+          <Link href="/about" className="text-blue-600 hover:text-blue-700 transition-colors">About Us</Link>
+          <Link href="/services" className="text-blue-600 hover:text-blue-700 transition-colors">Services</Link>
+          <Link href="/staff" className="text-blue-600 hover:text-blue-700 transition-colors">Staff/Doctors</Link>
+          <Link href="/contact" className="text-blue-600 hover:text-blue-700 transition-colors">Contact Us</Link>
+          <Link href="/blog" className="text-blue-600 hover:text-blue-700 transition-colors">Blog</Link>
         </div>
 
         {/* Right side */}
