@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground dark:bg-gray-900`}
       >
         <Providers>
           {/* Global container for all page content except footer */}
@@ -41,8 +41,8 @@ export default function RootLayout({
           </div>
 
           {/* Footer with full-width background */}
-          <footer className="w-full bg-blue-600 text-white">
-            <div className="max-w-7xl mx-auto px-4">
+          <footer className="w-full bg-gray-900 text-white">
+            <div className="max-w-7xl mx-auto px-4 mt-16">
               <Footer />
             </div>
           </footer>
