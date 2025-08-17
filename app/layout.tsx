@@ -31,20 +31,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
         <Providers>
-          {/* Navbar - full width with inner container */}
-          <header className="w-full">
-            <div className="max-w-7xl mx-auto px-4">
+          {/* Global container for all page content except footer */}
+          <div className="flex-1 w-full max-w-7xl mx-auto px-4 flex flex-col">
+            <header>
               <Navbar />
-            </div>
-          </header>
+            </header>
 
-          {/* Main content - centered container */}
-          <main className="flex-1 w-full">
-            <div className="max-w-7xl mx-auto px-4">{children}</div>
-          </main>
+            <main className="flex-1">{children}</main>
+          </div>
 
-          {/* Footer - full width with inner container */}
-          <footer className="w-full">
+          {/* Footer with full-width background */}
+          <footer className="w-full bg-blue-600 text-white">
             <div className="max-w-7xl mx-auto px-4">
               <Footer />
             </div>
