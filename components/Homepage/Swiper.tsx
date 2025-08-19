@@ -39,15 +39,15 @@ export default function CustomSwiper() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
                 {slide.title}
               </h2>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                 <p className="text-sm sm:text-base md:text-lg flex-1">
                   {slide.description}
                 </p>
                 <Link
                   href={slide.link}
-                  className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition"
+                  className="flex items-center gap-1 bg-white text-black px-2 py-2 rounded-full hover:bg-gray-200 transition"
                 >
-                  Learn More
+                  
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
