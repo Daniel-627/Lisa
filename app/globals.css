@@ -126,3 +126,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+@keyframes zoomIn {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+@keyframes zoomOut {
+  from { transform: scale(1.1); }
+  to { transform: scale(1); }
+}
+
+.swiper-zoom-in img {
+  animation: zoomIn 6s ease forwards;
+}
+
+.swiper-zoom-out img {
+  animation: zoomOut 6s ease forwards;
+}

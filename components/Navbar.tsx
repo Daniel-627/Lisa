@@ -46,7 +46,7 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="hidden md:flex items-center justify-between px-6 py-3 bg-background/80 backdrop-blur-md"
+        className="hidden md:flex items-center justify-between px-6 py-3 "
       >
         {/* Nav links */}
         <div className="flex gap-6">

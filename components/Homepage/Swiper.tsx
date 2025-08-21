@@ -19,16 +19,18 @@ export default function CustomSwiper() {
       loop
       className="w-full h-[350px] sm:h-[450px] md:h-[500px] lg:h-[550px] xl:h-[600px] rounded-2xl overflow-hidden"
     >
-      {slides.map((slide) => (
+      {slides.map((slide, index) => (
         <SwiperSlide key={slide.id}>
           <div className="relative w-full h-full">
-            {/* Background Image */}
+            {/* Background Image with alternating zoom */}
             <Image
               src={slide.image}
               alt={slide.title}
               fill
               priority
-              className="object-cover"
+              className={`object-cover ${
+                index % 2 === 0 ? "swiper-zoom-in" : "swiper-zoom-out"
+              }`}
             />
 
             {/* Gradient Overlay */}
@@ -47,7 +49,6 @@ export default function CustomSwiper() {
                   href={slide.link}
                   className="flex items-center gap-1 bg-white text-black px-2 py-2 rounded-full hover:bg-gray-200 transition"
                 >
-                  
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
