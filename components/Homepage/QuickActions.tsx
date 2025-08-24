@@ -33,7 +33,7 @@ const actions = [
 
 export default function QuickActions() {
   return (
-    <section className="w-full py-10">
+    <section className="w-full py-5">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {actions.map((action, i) => (
           <motion.div

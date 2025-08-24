@@ -14,7 +14,7 @@ const partners = [
 
 export default function InsurancePartners() {
   return (
-    <section className="py-20 bg-white dark:bg-[#001a33]">
+    <section className="py-10 ">
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-12">

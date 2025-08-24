@@ -33,7 +33,7 @@ const services = [
 
 export default function FeaturedServices() {
   return (
-    <section className="py-16 bg-gray-50 dark:bg-[#003366]">
+    <section className="py-8 bg-gray-50 dark:bg-[#003366]">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold text-[#003366] dark:text-white">
           Our Departments

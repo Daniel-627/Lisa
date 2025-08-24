@@ -6,7 +6,7 @@ import { PhoneCall } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section className="bg-[#1BA3E2] dark:bg-[#003366] py-10">
+    <section className=" py-5">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-white">
         {/* Text */}
         <motion.div

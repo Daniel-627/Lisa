@@ -36,7 +36,7 @@ export default function DoctorsSpotlight() {
   const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" });
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-950">
+    <section className="py-10  dark:bg-[#003366]/10">
       <div className="max-w-7xl mx-auto px-4 text-center mb-12">
         <h2 className="text-3xl font-bold text-[#003366] dark:text-white">
           Meet Our Specialists

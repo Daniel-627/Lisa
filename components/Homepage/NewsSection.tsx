@@ -36,7 +36,7 @@ const articles = [
 
 export default function NewsSection() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-[#00264d]">
+    <section className="py-10 ">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Heading */}
         <div className="text-center mb-12">

@@ -28,7 +28,7 @@ const differentiators = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section className="py-10">
       <div className="max-w-7xl mx-auto px-4 text-center mb-12">
         <h2 className="text-3xl font-bold text-[#003366] dark:text-white">
           Why Choose Lisa Hospital?

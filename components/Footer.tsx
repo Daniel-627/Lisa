@@ -5,7 +5,7 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
+    <footer className="bg-[#003366] text-gray-200 dark:bg-black dark:text-gray-300 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Column 1 - Quick Links */}
         <div>
@@ -62,7 +62,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-700 mt-10 pt-4 text-center text-sm text-gray-500">
+      <div className="border-t border-white/20 dark:border-gray-700 mt-10 pt-4 text-center text-sm text-gray-300">
         © {new Date().getFullYear()} Lisa PMS. All rights reserved.
       </div>
     </footer>

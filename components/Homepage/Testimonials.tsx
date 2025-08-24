@@ -29,7 +29,7 @@ export default function Testimonials() {
   const [emblaRef] = useEmblaCarousel({ loop: true, align: "center" });
 
   return (
-    <section className="py-20 bg-white dark:bg-[#003366]">
+    <section className="py-10 bg-white dark:bg-[#003366]">
       <div className="max-w-7xl mx-auto px-4 text-center mb-12">
         <h2 className="text-3xl font-bold text-[#003366] dark:text-white">
           What Our Patients Say
