@@ -1,9 +1,20 @@
-import React from 'react'
+// app/about/page.tsx
+"use client"
 
-type Props = {}
+import AboutHero from "@/components/About/AboutHero"
+import MissionHistory from "@/components/About/MissionHistory"
+import Accreditations from "@/components/About/Accreditations"
+import LeadershipProfiles from "@/components/About/Leadershipprofiles"
+import AboutCTA from "@/components/About/AboutCTA"
 
-export default function page({}: Props) {
+export default function AboutPage() {
   return (
-    <div>page</div>
+    <div className="flex flex-col">
+      <AboutHero />
+      <MissionHistory />
+      <Accreditations />
+      <LeadershipProfiles />
+      <AboutCTA />
+    </div>
   )
 }
