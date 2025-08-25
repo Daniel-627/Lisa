@@ -1,9 +1,9 @@
 "use client"
 
-import ServicesHero from "@/components/services/ServicesHero"
-import ServicesList from "@/components/services/ServicesList"
-import ServiceHighlight from "@/components/services/ServiceHighlight"
-import ServicesCTA from "@/components/services/ServicesCTA"
+import ServicesHero from "@/components/Services/ServicesHero"
+import ServicesList from "@/components/Services//ServicesList"
+import ServiceHighlight from "@/components/Services/ServicesHighlight"
+import ServicesCTA from "@/components/Services/ServicesCTA"
 
 export default function ServicesPage() {
   return (
