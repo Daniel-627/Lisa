@@ -1,9 +1,17 @@
-import React from 'react'
+"use client"
 
-type Props = {}
+import ContactHero from "@/components/Contact/ContactHero"
+import ContactInfo from "@/components/Contact/ContactInfo"
+import ContactForm from "@/components/Contact/ContactForm"
+import ContactCTA from "@/components/Contact/ContactCTA"
 
-export default function page({}: Props) {
+export default function ContactPage() {
   return (
-    <div>page</div>
+    <div className="flex flex-col">
+      <ContactHero />
+      <ContactInfo />
+      <ContactForm />
+      <ContactCTA />
+    </div>
   )
 }

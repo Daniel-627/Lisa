@@ -1,9 +1,13 @@
-import React from 'react'
+"use client"
 
-type Props = {}
+import AuthHero from "@/components/Auth/AuthHero"
+import AuthTabs from "@/components/Auth/AuthTabs"
 
-export default function page({}: Props) {
+export default function AuthPage() {
   return (
-    <div>page</div>
+    <div className="flex flex-col">
+      <AuthHero />
+      <AuthTabs />
+    </div>
   )
 }

@@ -1,9 +1,16 @@
-import React from 'react'
+// app/appointments/page.tsx
+"use client"
 
-type Props = {}
+import AppointmentHero from "@/components/Appointments/AppointmentHero"
+import AppointmentForm from "@/components/Appointments/AppointmentForm"
+import AppointmentConfirmation from "@/components/Appointments/AppointmentConfirmation"
 
-export default function page({}: Props) {
+export default function AppointmentsPage() {
   return (
-    <div>page</div>
+    <div className="flex flex-col">
+      <AppointmentHero />
+      <AppointmentForm />
+      <AppointmentConfirmation />
+    </div>
   )
 }

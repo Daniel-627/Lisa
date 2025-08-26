@@ -1,9 +1,13 @@
-import React from 'react'
+"use client"
 
-type Props = {}
+import FaqHero from "@/components/Faq/FaqHero"
+import FaqAccordion from "@/components/Faq/FaqAccordion"
 
-export default function page({}: Props) {
+export default function FaqPage() {
   return (
-    <div>page</div>
+    <div className="flex flex-col">
+      <FaqHero />
+      <FaqAccordion />
+    </div>
   )
 }
