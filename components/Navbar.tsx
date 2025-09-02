@@ -61,7 +61,7 @@ export default function Navbar() {
           <Link href="/services" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">Services</Link>
           <Link href="/doctors" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">Doctors</Link>
           <Link href="/contact" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">Contact Us</Link>
-          <Link href="/news" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">News</Link>
+          <Link href="/newsletter" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">News</Link>
         </div>
 
         {/* Right side */}
