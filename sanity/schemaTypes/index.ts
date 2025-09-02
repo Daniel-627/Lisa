@@ -5,8 +5,15 @@ import {categoryType} from './categoryType'
 import {postType} from './postType'
 import {authorType} from './authorType'
 import {heroSlide} from './heroSlide'
+import department from './department'
+import service from './service'
+import doctor from './doctor'
+
+// Then we give our schema to the builder and provide the result to Sanity
+// This is where we define the structure of our content types
+
 
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType, heroSlide],
+  types: [blockContentType, categoryType, postType, authorType, heroSlide, department, service, doctor],
 }
