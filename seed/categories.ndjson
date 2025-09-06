@@ -1,0 +1,5 @@
+{"_id": "category-1", "_type": "category", "title": "Health Tips", "slug": {"_type": "slug", "current": "health-tips"}, "description": "Practical health and wellness tips."}
+{"_id": "category-2", "_type": "category", "title": "Hospital News", "slug": {"_type": "slug", "current": "hospital-news"}, "description": "Updates and announcements from Lisa Hospital."}
+{"_id": "category-3", "_type": "category", "title": "Research", "slug": {"_type": "slug", "current": "research"}, "description": "Latest research and innovations in medicine."}
+{"_id": "category-4", "_type": "category", "title": "Patient Stories", "slug": {"_type": "slug", "current": "patient-stories"}, "description": "Real stories from patients and their journeys."}
+{"_id": "category-5", "_type": "category", "title": "Awareness Campaigns", "slug": {"_type": "slug", "current": "awareness-campaigns"}, "description": "Community outreach and awareness programs."}
