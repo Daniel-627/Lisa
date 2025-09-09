@@ -32,6 +32,12 @@ export default {
       of: [{ type: "string" }],
     },
     {
+      name: "department",
+      title: "Department",
+      type: "reference",
+      to: [{ type: "department" }],
+    },
+    {
       name: "services",
       title: "Services Provided",
       type: "array",
