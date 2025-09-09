@@ -58,7 +58,7 @@ export default function Navbar() {
         <div className="flex gap-6">
           <Link href="/" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">Home</Link>
           <Link href="/about" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">About Us</Link>
-          <Link href="/services" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">Services</Link>
+          <Link href="/departments" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">Departments</Link>
           <Link href="/doctors" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">Doctors</Link>
           <Link href="/contact" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">Contact Us</Link>
           <Link href="/newsletter" className="text-[#1BA3E2] dark:text-[#ffff] hover:text-[#40E0D0] transition-colors">News</Link>
