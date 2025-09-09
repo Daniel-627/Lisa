@@ -1,6 +1,6 @@
 import { client } from "../sanity/lib/client";
 
-import { Department, Doctor, Service, Author, Category, Post } from "../types/sanity";
+import { Department, Doctor, Service, Author, Category, Post, HeroSlide } from "../types/sanity";
 
 
 
@@ -224,4 +224,16 @@ export const fetchPostBySlug = async (slug: string): Promise<Post | null> => {
     }
   }`
   return await client.fetch(query, { slug })
+}
+
+// Fetch all hero slides
+export const getHeroSlides = async (): Promise<HeroSlide[]> => {
+  const query = `*[_type == "heroSlide"]{
+    _id,
+    title,
+    description,
+    image,
+    link
+  }`
+  return await client.fetch(query)
 }

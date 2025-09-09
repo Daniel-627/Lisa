@@ -87,3 +87,20 @@ export type Post = {
   publishedAt: string
   body: any[] // Portable Text blocks
 }
+
+
+export interface HeroSlide {
+  _id: string
+  _type: "heroSlide"
+  title: string
+  description?: string
+  image: {
+    asset: {
+      _ref: string
+      _type: "reference"
+    }
+    alt?: string
+  }
+  link?: string
+  order?: number
+}
