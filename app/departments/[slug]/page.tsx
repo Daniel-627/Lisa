@@ -3,11 +3,11 @@ import { urlFor } from "@/sanity/lib/image"
 import Image from "next/image"
 import Link from "next/link"
 
-interface Props {
+export default async function DepartmentPage({
+  params,
+}: {
   params: { slug: string }
-}
-
-export default async function DepartmentPage({ params }: Props) {
+}) {
   const department = await getDepartmentBySlug(params.slug)
 
   if (!department) {
