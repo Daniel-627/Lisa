@@ -1,13 +1,23 @@
-import { getDepartmentBySlug } from "@/lib/sanity"
+import { getDepartments, getDepartmentBySlug } from "@/lib/sanity"
 import { urlFor } from "@/sanity/lib/image"
 import Image from "next/image"
 import Link from "next/link"
 
-export default async function DepartmentPage({
-  params,
-}: {
+// Props for the dynamic page
+interface DepartmentPageProps {
   params: { slug: string }
-}) {
+}
+
+// ✅ Generate static params (SSG)
+export async function generateStaticParams() {
+  const departments = await getDepartments()
+  return departments.map((dep) => ({
+    slug: dep.slug,
+  }))
+}
+
+// ✅ Page component
+export default async function DepartmentPage({ params }: DepartmentPageProps) {
   const department = await getDepartmentBySlug(params.slug)
 
   if (!department) {
@@ -49,7 +59,7 @@ export default async function DepartmentPage({
           </div>
         )}
 
-        {/* Services in this Department */}
+        {/* Services */}
         {department.services && department.services.length > 0 && (
           <div>
             <h2 className="text-2xl font-bold text-[#1BA3E2] mb-6">
@@ -73,7 +83,7 @@ export default async function DepartmentPage({
           </div>
         )}
 
-        {/* Back button */}
+        {/* Back */}
         <div className="mt-12 text-center">
           <Link
             href="/departments"
