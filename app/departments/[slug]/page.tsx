@@ -1,37 +1,24 @@
-import { getDepartments, getDepartmentBySlug } from "@/lib/sanity"
+import { getDepartmentBySlug } from "@/lib/sanity"
 import { urlFor } from "@/sanity/lib/image"
 import Image from "next/image"
 import Link from "next/link"
+import { notFound } from "next/navigation"
 
-// Props for the dynamic page
-interface DepartmentPageProps {
-  params: { slug: string }
+interface PageProps {
+  params: {
+    slug: string
+  }
 }
 
-// ✅ Generate static params (SSG)
-export async function generateStaticParams() {
-  const departments = await getDepartments()
-  return departments.map((dep) => ({
-    slug: dep.slug,
-  }))
-}
+export default async function Page({ params }: PageProps) {
+  const { slug } = params
 
-// ✅ Page component
-export default async function DepartmentPage({ params }: DepartmentPageProps) {
-  const department = await getDepartmentBySlug(params.slug)
+  // Fetch department from Sanity
+  const department = await getDepartmentBySlug(slug)
 
+  // Handle 404 if not found
   if (!department) {
-    return (
-      <div className="max-w-4xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-2xl font-bold text-red-600">Department not found</h1>
-        <Link
-          href="/departments"
-          className="mt-6 inline-block bg-[#1BA3E2] text-white px-6 py-3 rounded-lg hover:bg-[#003366] transition"
-        >
-          Back to Departments
-        </Link>
-      </div>
-    )
+    return notFound()
   }
 
   return (
@@ -96,3 +83,6 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
     </section>
   )
 }
+
+// ✅ Revalidate every 60s (ISR)
+export const revalidate = 60
