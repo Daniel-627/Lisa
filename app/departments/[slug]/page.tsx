@@ -4,13 +4,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-interface DepartmentPageProps {
-  params: {
-    slug: string
-  }
-}
-
-export default async function DepartmentPage({ params }: DepartmentPageProps) {
+export default async function DepartmentPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const { slug } = params
 
   // Fetch department from Sanity
