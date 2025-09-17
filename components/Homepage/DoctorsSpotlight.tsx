@@ -62,11 +62,6 @@ export default function DoctorsSpotlight() {
               <h3 className="text-lg font-semibold text-[#003366] dark:text-white">
                 {doc.name}
               </h3>
-              {doc.services?.[0] && (
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  {doc.services[0].title}
-                </p>
-              )}
               <Link
                 href="/appointments"
                 className="mt-3 inline-block bg-[#1BA3E2] text-white px-4 py-2 rounded-full hover:bg-[#003366] transition"
