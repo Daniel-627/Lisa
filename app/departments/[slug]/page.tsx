@@ -4,13 +4,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-// ✅ Define the correct props type
+// ✅ Correct props type: params is a Promise
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export default async function DepartmentPage({ params }: Props) {
-  const { slug } = params
+  // ✅ Must await params in Next.js 15
+  const { slug } = await params
 
   // Fetch department from Sanity
   const department = await getDepartmentBySlug(slug)
