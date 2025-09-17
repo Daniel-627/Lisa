@@ -26,12 +26,6 @@ export default {
       options: { hotspot: true },
     },
     {
-      name: "services",
-      title: "Services Offered",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "service" }] }],
-    },
-    {
       name: "doctors",
       title: "Available Doctors",
       type: "array",

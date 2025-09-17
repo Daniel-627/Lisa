@@ -37,11 +37,5 @@ export default {
       type: "reference",
       to: [{ type: "department" }],
     },
-    {
-      name: "services",
-      title: "Services Provided",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "service" }] }],
-    },
   ],
 }

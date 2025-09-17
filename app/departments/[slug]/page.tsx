@@ -4,22 +4,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-interface PageProps {
-  params: {
-    slug: string
-  }
-}
-
-export default async function Page({ params }: PageProps) {
+export default async function DepartmentPage({ params }: { params: Record<string, string> }) {
   const { slug } = params
 
   // Fetch department from Sanity
   const department = await getDepartmentBySlug(slug)
 
-  // Handle 404 if not found
-  if (!department) {
-    return notFound()
-  }
+  if (!department) return notFound()
 
   return (
     <section className="py-16 px-6">
@@ -46,31 +37,39 @@ export default async function Page({ params }: PageProps) {
           </div>
         )}
 
-        {/* Services */}
-        {department.services && department.services.length > 0 && (
+        {/* Doctors */}
+        {department.doctors?.length > 0 && (
           <div>
             <h2 className="text-2xl font-bold text-[#1BA3E2] mb-6">
-              Services We Provide
+              Our Doctors
             </h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {department.services.map((service) => (
-                <div
-                  key={service._id}
+              {department.doctors.map((doctor) => (
+                <Link
+                  href={`/doctors/${doctor.slug}`}
+                  key={doctor._id}
                   className="bg-gray-100 dark:bg-[#002244] p-6 rounded-lg shadow hover:shadow-lg transition"
                 >
+                  {doctor.photo && (
+                    <div className="relative w-full h-40 mb-4 rounded-md overflow-hidden">
+                      <Image
+                        src={urlFor(doctor.photo).url()}
+                        alt={doctor.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
                   <h3 className="text-lg font-semibold text-[#1BA3E2] mb-2">
-                    {service.title}
+                    {doctor.name}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {service.description}
-                  </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         )}
 
-        {/* Back */}
+        {/* Back button */}
         <div className="mt-12 text-center">
           <Link
             href="/departments"
@@ -84,5 +83,4 @@ export default async function Page({ params }: PageProps) {
   )
 }
 
-// ✅ Revalidate every 60s (ISR)
 export const revalidate = 60

@@ -1,9 +1,5 @@
 import { client } from "../sanity/lib/client";
-
-import { Department, Doctor, Service, Author, Category, Post, HeroSlide } from "../types/sanity";
-
-
-
+import { Department, Doctor, Author, Category, Post, HeroSlide } from "../types/sanity";
 
 // ---------- Departments ----------
 export const getDepartments = async (): Promise<Department[]> => {
@@ -13,12 +9,11 @@ export const getDepartments = async (): Promise<Department[]> => {
     "slug": slug.current,
     description,
     image,
-    services[]->{
+    doctors[]->{
       _id,
-      title,
+      name,
       "slug": slug.current,
-      description,
-      image
+      photo
     }
   }`
   return client.fetch(query)
@@ -31,51 +26,6 @@ export const getDepartmentBySlug = async (slug: string): Promise<Department | nu
     "slug": slug.current,
     description,
     image,
-    services[]->{
-      _id,
-      title,
-      "slug": slug.current,
-      description,
-      image
-    }
-  }`
-  return client.fetch(query, { slug })
-}
-
-// ---------- Services ----------
-export const getServices = async (): Promise<Service[]> => {
-  const query = `*[_type == "service"]{
-    _id,
-    title,
-    "slug": slug.current,
-    description,
-    image,
-    department->{
-      _id,
-      name,
-      "slug": slug.current
-    },
-    doctors[]->{
-      _id,
-      name,
-      "slug": slug.current,
-      photo
-    }
-  }`
-  return client.fetch(query)
-}
-
-export const getServiceBySlug = async (slug: string): Promise<Service | null> => {
-  const query = `*[_type == "service" && slug.current == $slug][0]{
-    _id,
-    title,
-    description,
-    image,
-    department->{
-      _id,
-      name,
-      "slug": slug.current
-    },
     doctors[]->{
       _id,
       name,
@@ -95,9 +45,9 @@ export const getDoctors = async (): Promise<Doctor[]> => {
     photo,
     bio,
     qualifications,
-    services[]->{
+    department->{
       _id,
-      title,
+      name,
       "slug": slug.current
     }
   }`
@@ -111,15 +61,14 @@ export const getDoctorBySlug = async (slug: string): Promise<Doctor | null> => {
     photo,
     bio,
     qualifications,
-    services[]->{
+    department->{
       _id,
-      title,
+      name,
       "slug": slug.current
     }
   }`
   return client.fetch(query, { slug })
 }
-
 
 
 // Fetch all authors

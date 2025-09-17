@@ -9,26 +9,7 @@ export type Department = {
       _type: "reference"
     }
   }
-  services?: Service[]
-}
-
-export type Service = {
-  _id: string
-  title: string
-  slug: string
-  description?: string
-  image?: {
-    asset: {
-      _ref: string
-      _type: "reference"
-    }
-  }
-  department?: {
-    _id: string
-    name: string
-    slug: string
-  }
-  doctors?: Doctor[]
+  doctors: Doctor[]   // always an array
 }
 
 export type Doctor = {
@@ -42,12 +23,12 @@ export type Doctor = {
     }
   }
   bio?: string
-  qualifications?: string[]
-  services?: {
+  qualifications: string[]   // always an array
+  department?: {
     _id: string
-    title: string
+    name: string
     slug: string
-  }[]
+  }
 }
 
 
