@@ -4,7 +4,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-export default async function DepartmentPage({ params }: { params: Record<string, string> }) {
+interface DepartmentPageProps {
+  params: {
+    slug: string
+  }
+}
+
+export default async function DepartmentPage({ params }: DepartmentPageProps) {
   const { slug } = params
 
   // Fetch department from Sanity
@@ -38,7 +44,7 @@ export default async function DepartmentPage({ params }: { params: Record<string
         )}
 
         {/* Doctors */}
-        {department.doctors?.length > 0 && (
+        {department.doctors?.length ? (
           <div>
             <h2 className="text-2xl font-bold text-[#1BA3E2] mb-6">
               Our Doctors
@@ -67,7 +73,7 @@ export default async function DepartmentPage({ params }: { params: Record<string
               ))}
             </div>
           </div>
-        )}
+        ) : null}
 
         {/* Back button */}
         <div className="mt-12 text-center">
