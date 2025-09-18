@@ -1,0 +1,6 @@
+{ "_id": "partner-nhif", "_type": "insurancePartner", "name": "NHIF" }
+{ "_id": "partner-jubilee", "_type": "insurancePartner", "name": "Jubilee Insurance" }
+{ "_id": "partner-aar", "_type": "insurancePartner", "name": "AAR Insurance" }
+{ "_id": "partner-britam", "_type": "insurancePartner", "name": "Britam" }
+{ "_id": "partner-apa", "_type": "insurancePartner", "name": "APA Insurance" }
+{ "_id": "partner-uap", "_type": "insurancePartner", "name": "UAP Old Mutual" }
