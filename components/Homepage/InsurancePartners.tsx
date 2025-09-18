@@ -45,13 +45,19 @@ export default function InsurancePartners() {
               viewport={{ once: true }}
               className="flex items-center justify-center"
             >
-              <Image
-                src={urlFor(partner.logo).url()}
-                alt={partner.name}
-                width={120}
-                height={60}
-                className="object-contain grayscale hover:grayscale-0 transition"
-              />
+              {partner.logo ? (
+                <Image
+                  src={urlFor(partner.logo).url()}
+                  alt={partner.name}
+                  width={120}
+                  height={60}
+                  className="object-contain grayscale hover:grayscale-0 transition"
+                />
+              ) : (
+                <div className="w-[120px] h-[60px] bg-gray-200 flex items-center justify-center rounded text-sm text-gray-500">
+                  No Logo
+                </div>
+              )}
             </motion.a>
           ))}
         </div>
