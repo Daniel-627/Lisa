@@ -85,3 +85,30 @@ export interface HeroSlide {
   link?: string
   order?: number
 }
+
+
+export type InsurancePartner = {
+  _id: string;
+  name: string;
+  logo: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+    };
+  };
+  website?: string;
+};
+
+export type Testimonial = {
+  _id: string;
+  name: string;
+  text: string;
+  image?: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+    };
+  };
+};
+
+

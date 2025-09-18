@@ -2,19 +2,24 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const partners = [
-  { id: 1, name: "NHIF", logo: "/images/partners/nhif.png" },
-  { id: 2, name: "Jubilee Insurance", logo: "/images/partners/jubilee.png" },
-  { id: 3, name: "AAR Insurance", logo: "/images/partners/aar.png" },
-  { id: 4, name: "Britam", logo: "/images/partners/britam.png" },
-  { id: 5, name: "APA Insurance", logo: "/images/partners/apa.png" },
-  { id: 6, name: "UAP Old Mutual", logo: "/images/partners/uap.png" },
-];
+import { useEffect, useState } from "react";
+import { getInsurancePartners } from "@/lib/sanity";
+import { InsurancePartner } from "@/types/sanity";
+import { urlFor } from "@/sanity/lib/image";
 
 export default function InsurancePartners() {
+  const [partners, setPartners] = useState<InsurancePartner[]>([]);
+
+  useEffect(() => {
+    const loadPartners = async () => {
+      const data = await getInsurancePartners();
+      setPartners(data);
+    };
+    loadPartners();
+  }, []);
+
   return (
-    <section className="py-10 ">
+    <section className="py-10">
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-12">
@@ -29,8 +34,11 @@ export default function InsurancePartners() {
         {/* Logos Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
           {partners.map((partner, i) => (
-            <motion.div
-              key={partner.id}
+            <motion.a
+              key={partner._id}
+              href={partner.website || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -38,13 +46,13 @@ export default function InsurancePartners() {
               className="flex items-center justify-center"
             >
               <Image
-                src={partner.logo}
+                src={urlFor(partner.logo).url()}
                 alt={partner.name}
                 width={120}
                 height={60}
                 className="object-contain grayscale hover:grayscale-0 transition"
               />
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
