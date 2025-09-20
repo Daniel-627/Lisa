@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { getAccreditations } from "@/lib/sanity"
 import { Accreditation } from "@/types/sanity"
+import { urlFor } from "@/sanity/lib/image"
 
 export default function Accreditations() {
   const [items, setItems] = useState<Accreditation[]>([])
@@ -29,7 +30,7 @@ export default function Accreditations() {
                   <Image
                     src={item.logo.asset?._ref ?
                       // Convert Sanity ref into usable URL
-                      (require("@/sanity/lib/image").urlFor(item.logo).width(200).url())
+                      (urlFor(item.logo).width(200).url())
                       : "/placeholder.png"}
                     alt={item.title}
                     width={120}
@@ -55,3 +56,4 @@ export default function Accreditations() {
     </section>
   )
 }
+
