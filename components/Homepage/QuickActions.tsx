@@ -18,12 +18,6 @@ const actions = [
     color: "bg-gradient-to-br from-blue-500 to-indigo-600",
   },
   {
-    title: "Find a Location",
-    icon: <Building2 className="w-8 h-8" />,
-    link: "/locations",
-    color: "bg-gradient-to-br from-emerald-500 to-teal-600",
-  },
-  {
     title: "Patient Portal",
     icon: <Pill className="w-8 h-8" />,
     link: "/portal",

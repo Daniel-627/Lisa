@@ -41,7 +41,8 @@ export default function InsurancePartners() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.4 }}
               viewport={{ once: true }}
               className="flex items-center justify-center"
             >
@@ -51,7 +52,7 @@ export default function InsurancePartners() {
                   alt={partner.name}
                   width={120}
                   height={60}
-                  className="object-contain grayscale hover:grayscale-0 transition"
+                  className="object-contain transition-transform"
                 />
               ) : (
                 <div className="w-[120px] h-[60px] bg-gray-200 flex items-center justify-center rounded text-sm text-gray-500">

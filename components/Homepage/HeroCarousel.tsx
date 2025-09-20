@@ -42,7 +42,7 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <div className="relative w-full h-[350px] sm:h-[450px] md:h-[500px] lg:h-[500px] xl:h-[550px] rounded-2xl overflow-hidden">
+    <div className="relative w-full h-[350px] sm:h-[450px] md:h-[500px] lg:h-[450px] xl:h-[500px] rounded-2xl overflow-hidden">
       {/* Carousel viewport */}
       <div ref={emblaRef} className="h-full overflow-hidden">
         <div className="flex h-full">
