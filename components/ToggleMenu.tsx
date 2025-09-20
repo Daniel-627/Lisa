@@ -27,9 +27,9 @@ export function ToggleMenu() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ x: "-100%" }}
+            initial={{ x: "100%" }}
             animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
+            exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="fixed top-0 left-0 h-full w-3/4 bg-white dark:bg-[#003366] shadow-lg z-50 p-6 flex flex-col gap-6"
           >
