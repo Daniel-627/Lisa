@@ -38,7 +38,7 @@ export function ToggleMenu() {
                 { href: "/departments", label: "Departments" },
                 { href: "/doctors", label: "Doctors" },
                 { href: "/contact", label: "Contact Us" },
-                { href: "/blog", label: "Blog" },
+                { href: "/newsletter", label: "Blog" },
                 { href: "/appointments", label: "Appointments" },
               ].map((link) => (
                 <Link
