@@ -1,39 +1,30 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Stethoscope, HeartPulse, Scissors, Scan } from "lucide-react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
-const services = [
-  {
-    icon: Stethoscope,
-    title: "Pediatrics",
-    description: "Comprehensive care for children and newborns.",
-    link: "/services/pediatrics",
-  },
-  {
-    icon: HeartPulse,
-    title: "Cardiology",
-    description: "Advanced heart and vascular care for all ages.",
-    link: "/services/cardiology",
-  },
-  {
-    icon: Scissors,
-    title: "Surgery",
-    description: "Modern surgical procedures with expert teams.",
-    link: "/services/surgery",
-  },
-  {
-    icon: Scan,
-    title: "Radiology",
-    description: "State-of-the-art imaging and diagnostic services.",
-    link: "/services/radiology",
-  },
-];
+import { getDepartments } from "@/lib/sanity";
+import { Department } from "@/types/sanity";
 
 export default function FeaturedServices() {
+  const [departments, setDepartments] = useState<Department[]>([]);
+
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        const data = await getDepartments();
+        setDepartments(data);
+      } catch (err) {
+        console.error("Error fetching departments:", err);
+      }
+    };
+    fetchDepartments();
+  }, []);
+
   return (
-    <section className="py-8 bg-gray-50 dark:bg-[#003366]">
+    <section className="py-12 bg-gray-50 dark:bg-[#003366]">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold text-[#003366] dark:text-white">
           Our Departments
@@ -43,36 +34,24 @@ export default function FeaturedServices() {
         </p>
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto px-4">
-        {services.map((service, i) => {
-          const Icon = service.icon;
-          return (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-[#1BA3E2]/10 rounded-xl shadow-md p-6 hover:shadow-lg transition"
+      <div className="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {departments.map((dept, i) => (
+          <motion.div
+            key={dept._id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: i * 0.1 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              href={`/services/${dept.slug}`}
+              className="flex items-center justify-between dark:bg-[#1BA3E2]/20 text-[#003366] hover:scale-110 dark:text-white rounded-xl p-6 shadow-md dark:hover:bg-[#1489c0] transition group"
             >
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-[#1BA3E2]/20 text-[#1BA3E2] mb-4">
-                <Icon size={28} />
-              </div>
-              <h3 className="text-xl font-semibold text-[#003366] dark:text-white">
-                {service.title}
-              </h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-300 text-sm">
-                {service.description}
-              </p>
-              <Link
-                href={service.link}
-                className="mt-4 inline-block text-sm font-medium text-[#1BA3E2] hover:underline"
-              >
-                Learn More →
-              </Link>
-            </motion.div>
-          );
-        })}
+              <span className="text-lg font-semibold">{dept.name}</span>
+              <ArrowRight className="w-6 h-6 text-[#1BA3E2] dark:text-white group-hover:translate-x-1 transition" />
+            </Link>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
