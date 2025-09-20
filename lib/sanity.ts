@@ -1,5 +1,5 @@
 import { client } from "../sanity/lib/client";
-import { Department, Doctor, Author, Category, Post, HeroSlide, InsurancePartner, Testimonial } from "../types/sanity";
+import { Department, Doctor, Author, Category, Post, HeroSlide, InsurancePartner, Testimonial, Accreditation, Leader } from "../types/sanity";
 
 // ---------- Departments ----------
 export const getDepartments = async (): Promise<Department[]> => {
@@ -208,3 +208,25 @@ export const getTestimonials = async (): Promise<Testimonial[]> => {
   }`;
   return await client.fetch(query);
 };
+
+// ---------- Accreditations ----------
+export const getAccreditations = async (): Promise<Accreditation[]> => {
+  const query = `*[_type == "accreditation"]{
+    _id,
+    title,
+    logo
+  }`
+  return client.fetch(query)
+}
+
+
+export async function getLeaders(): Promise<Leader[]> {
+  return client.fetch(
+    `*[_type == "leader"]{
+      _id,
+      name,
+      role,
+      photo
+    }`
+  )
+}

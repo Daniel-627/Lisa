@@ -112,3 +112,25 @@ export type Testimonial = {
 };
 
 
+export type Accreditation = {
+  _id: string
+  title: string // e.g., ISO, KEBS, NHIF, WHO
+  logo?: {
+    asset: {
+      _ref: string
+      _type: "reference"
+    }
+  }
+}
+
+
+export interface Leader {
+  _id: string
+  name: string
+  role: string
+  photo: {
+    asset: {
+      _ref: string
+    }
+  }
+}

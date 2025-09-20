@@ -31,7 +31,7 @@ export function ToggleMenu() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed top-0 left-0 h-full w-3/4 bg-white dark:bg-[#003366] shadow-lg z-50 p-6 flex flex-col gap-6"
+            className="fixed top-0 right-0 h-full w-3/4 bg-white dark:bg-[#003366] shadow-lg z-50 p-6 flex flex-col gap-6"
           >
             {/* Header with logo + close button */}
             <div className="flex items-center justify-between mb-6">
