@@ -42,6 +42,7 @@ export const getDoctors = async (): Promise<Doctor[]> => {
     _id,
     name,
     "slug": slug.current,
+    professional_title,
     photo,
     bio,
     qualifications,

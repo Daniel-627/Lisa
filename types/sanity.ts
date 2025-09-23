@@ -16,6 +16,7 @@ export type Doctor = {
   _id: string
   name: string
   slug: string
+  professional_title?: string
   photo?: {
     asset: {
       _ref: string

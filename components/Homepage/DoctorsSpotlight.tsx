@@ -42,32 +42,39 @@ export default function DoctorsSpotlight() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.2 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-[#003366]/40 rounded-xl shadow hover:shadow-lg transition"
+            className="relative group rounded-xl overflow-hidden shadow-lg h-80"
           >
-            <div className="relative w-full h-56 rounded-t-xl overflow-hidden">
-              {doc.photo ? (
-                <Image
-                  src={urlFor(doc.photo).url()}
-                  alt={doc.name}
-                  fill
-                  className="object-cover hover:scale-105 transition"
-                />
-              ) : (
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-500">No Image</span>
-                </div>
-              )}
-            </div>
-            <div className="p-4 text-center">
-              <h3 className="text-lg font-semibold text-[#003366] dark:text-white">
-                {doc.name}
-              </h3>
-              <Link
-                href="/appointments"
-                className="mt-3 inline-block bg-[#1BA3E2] text-white px-4 py-2 rounded-full hover:bg-[#003366] transition"
-              >
-                Book Now
-              </Link>
+            {doc.photo ? (
+              <Image
+                src={urlFor(doc.photo).width(400).height(400).url()}
+                alt={doc.name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                <span className="text-gray-500">No Image</span>
+              </div>
+            )}
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end">
+              <div className="p-4 text-white">
+                <h3 className="font-semibold text-lg">{doc.name}</h3>
+                {doc.professional_title && (
+                  <p className="text-sm text-gray-200">
+                    {doc.professional_title}
+                  </p>
+                )}
+              </div>
+              <div className="absolute bottom-4 right-4">
+                <Link
+                  href="/appointments"
+                  className="bg-[#1BA3E2] text-white px-4 py-2 rounded-lg hover:bg-[#148ec0] transition"
+                >
+                  Book Now
+                </Link>
+              </div>
             </div>
           </motion.div>
         ))}

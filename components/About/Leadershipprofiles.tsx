@@ -20,75 +20,28 @@ export default function LeadershipProfiles() {
           Our Leadership
         </h2>
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-          {leaders.length > 0 ? (
-            leaders.map((leader) => (
-              <div
-                key={leader._id}
-                className="bg-gray-100 dark:bg-[#002244] rounded-lg p-6 text-center shadow"
-              >
-                {leader.photo ? (
-                  <Image
-                    src={urlFor(leader.photo).width(200).height(200).url()}
-                    alt={leader.name}
-                    width={96}
-                    height={96}
-                    className="w-24 h-24 mx-auto rounded-full mb-4 object-cover"
-                  />
-                ) : (
-                  <div className="w-24 h-24 mx-auto rounded-full mb-4 bg-gray-300" />
-                )}
-                <h3 className="font-semibold text-lg text-[#1BA3E2]">
-                  {leader.name}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  {leader.role}
-                </p>
-              </div>
-            ))
-          ) : (
-            // fallback static leaders
-            <>
-              <div className="bg-gray-100 dark:bg-[#002244] rounded-lg p-6 text-center shadow">
-                <img
-                  src="/team/ceo.jpg"
-                  alt="Dr. Jane Doe"
-                  className="w-24 h-24 mx-auto rounded-full mb-4 object-cover"
+          {leaders.map((leader) => (
+            <div
+              key={leader._id}
+              className="relative group rounded-lg overflow-hidden shadow-lg h-80"
+            >
+              {leader.photo && (
+                <Image
+                  src={urlFor(leader.photo).width(400).height(400).url()}
+                  alt={leader.name}
+                  fill
+                  className="object-cover"
                 />
-                <h3 className="font-semibold text-lg text-[#1BA3E2]">
-                  Dr. Jane Doe
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  CEO
-                </p>
+              )}
+              {/* Dark overlay at bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="p-4 w-full text-white">
+                  <h3 className="font-semibold text-lg">{leader.name}</h3>
+                  <p className="text-sm">{leader.role}</p>
+                </div>
               </div>
-              <div className="bg-gray-100 dark:bg-[#002244] rounded-lg p-6 text-center shadow">
-                <img
-                  src="/team/director.jpg"
-                  alt="Dr. John Smith"
-                  className="w-24 h-24 mx-auto rounded-full mb-4 object-cover"
-                />
-                <h3 className="font-semibold text-lg text-[#1BA3E2]">
-                  Dr. John Smith
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Medical Director
-                </p>
-              </div>
-              <div className="bg-gray-100 dark:bg-[#002244] rounded-lg p-6 text-center shadow">
-                <img
-                  src="/team/nursing.jpg"
-                  alt="Mary Johnson"
-                  className="w-24 h-24 mx-auto rounded-full mb-4 object-cover"
-                />
-                <h3 className="font-semibold text-lg text-[#1BA3E2]">
-                  Mary Johnson
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Head of Nursing
-                </p>
-              </div>
-            </>
-          )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

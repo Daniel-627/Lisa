@@ -15,6 +15,11 @@ export default {
       options: { source: "name", maxLength: 96 },
     },
     {
+      name: "professional_title",
+      title: "Professional Title",
+      type: "string",
+    },
+    {
       name: "photo",
       title: "Photo",
       type: "image",
