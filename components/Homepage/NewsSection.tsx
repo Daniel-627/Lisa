@@ -71,7 +71,7 @@ export default function NewsSection() {
                     "Read more about this article."}
                 </p>
                 <Link
-                  href={`/news/${post.slug}`}
+                  href={`/newsletter/${post.slug}`}
                   className="mt-4 inline-block text-[#1BA3E2] dark:text-[#40E0D0] font-medium hover:underline"
                 >
                   Read More →

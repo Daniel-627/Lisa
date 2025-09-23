@@ -59,6 +59,7 @@ export const getDoctorBySlug = async (slug: string): Promise<Doctor | null> => {
   const query = `*[_type == "doctor" && slug.current == $slug][0]{
     _id,
     name,
+    professional_title,
     photo,
     bio,
     qualifications,

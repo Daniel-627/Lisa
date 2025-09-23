@@ -20,7 +20,7 @@ export default function DoctorsGrid() {
       const data = await getDoctors();
       setDoctors(data);
 
-      // ✅ Collect unique departments from doctors
+      // Collect unique departments
       const uniqueDeps = Array.from(
         new Set(data.map((doc) => doc.department?.name).filter(Boolean))
       ) as string[];
@@ -30,7 +30,7 @@ export default function DoctorsGrid() {
     loadDoctors();
   }, []);
 
-  // ✅ Filter logic
+  // Filter logic
   const filteredDoctors = useMemo(() => {
     return doctors.filter((doc) => {
       const matchesDep =
@@ -39,36 +39,27 @@ export default function DoctorsGrid() {
 
       const matchesSearch =
         doc.name.toLowerCase().includes(search.toLowerCase()) ||
-        doc.professional_title?.toLowerCase().includes(search.toLowerCase());
+        doc.professional_title?.toLowerCase().includes(search.toLowerCase()) ||
+        doc.department?.name?.toLowerCase().includes(search.toLowerCase());
 
       return matchesDep && matchesSearch;
     });
   }, [doctors, activeDep, search]);
 
   return (
-    <section className="py-16 px-6 bg-gray-50 dark:bg-[#002244]">
-      <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#003366] dark:text-white">
-          Meet Our Doctors
-        </h2>
-        <p className="mt-3 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Our dedicated team of specialists is here to provide expert care,
-          tailored to your needs.
-        </p>
-      </div>
-
-      {/* ✅ Search bar */}
-      <div className="max-w-4xl mx-auto mb-8">
+    <section className="py-16 px-6 bg-gray-50 dark:bg-[#003366]">
+      {/* ✅ Search bar (Mobile only) */}
+      <div className="max-w-4xl mx-auto mb-8 sm:hidden">
         <input
           type="text"
-          placeholder="Search doctors by name or specialty..."
+          placeholder="Search doctors..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#003366] text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-[#1BA3E2] outline-none"
         />
       </div>
 
-      {/* ✅ Dynamic Filter buttons */}
+      {/* ✅ Department filter buttons */}
       <div className="bg-white dark:bg-[#003366] py-4 px-3 flex gap-3 flex-wrap justify-center mb-10 rounded-lg shadow">
         {departments.map((dep) => (
           <button
@@ -94,10 +85,10 @@ export default function DoctorsGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-[#003366] rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col"
+              className="relative rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group"
             >
-              {/* Profile Image */}
-              <div className="relative w-full h-64">
+              {/* Background Image */}
+              <div className="relative w-full h-72">
                 {doc.photo ? (
                   <Image
                     src={urlFor(doc.photo).url()}
@@ -112,27 +103,20 @@ export default function DoctorsGrid() {
                 )}
               </div>
 
-              {/* Info */}
-              <div className="flex-1 p-6 flex flex-col items-center text-center">
-                <h3 className="text-xl font-semibold text-[#1BA3E2]">
-                  {doc.name}
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200 mt-1">
+              {/* Overlay - Desktop hover / Mobile always visible */}
+              <div className="absolute inset-0 bg-black/60 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition flex flex-col justify-end p-6">
+                <h3 className="text-lg font-semibold text-white">{doc.name}</h3>
+                <p className="text-sm text-gray-200">
                   {doc.professional_title}
                 </p>
-                {doc.department && (
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                    {doc.department.name}
-                  </p>
-                )}
 
-                {/* CTA */}
                 <Link
                   href={`/doctors/${doc.slug}`}
-                  className="mt-auto w-full bg-[#1BA3E2] text-white py-3 px-4 rounded-lg hover:bg-[#003366] transition"
+                  className="mt-3 w-fit bg-[#1BA3E2] text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-[#003366] transition"
                 >
                   View Profile
                 </Link>
+
               </div>
             </motion.div>
           ))}

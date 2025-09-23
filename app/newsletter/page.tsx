@@ -10,6 +10,8 @@ import { Post } from "@/types/sanity";        // ✅ typed posts
 
 export default function NewsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -19,8 +21,13 @@ export default function NewsPage() {
     loadPosts();
   }, []);
 
+  // Pagination logic
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const currentPosts = posts.slice(startIndex, startIndex + postsPerPage);
+
   return (
-    <section className="py-10 ">
+    <section className="py-10">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Heading */}
         <div className="text-center mb-12">
@@ -34,7 +41,7 @@ export default function NewsPage() {
 
         {/* Articles Grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post, i) => (
+          {currentPosts.map((post, i) => (
             <motion.div
               key={post._id}
               initial={{ opacity: 0, y: 40 }}
@@ -67,12 +74,11 @@ export default function NewsPage() {
                   {post.title}
                 </h3>
                 <p className="mt-2 text-gray-600 dark:text-gray-300 text-sm">
-                  {/* Take first 150 chars from body if no description */}
                   {post.body?.[0]?.children?.[0]?.text?.slice(0, 150) ??
                     "Read more about this article."}
                 </p>
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={`/newsletter/${post.slug}`}
                   className="mt-4 inline-block text-[#1BA3E2] dark:text-[#40E0D0] font-medium hover:underline"
                 >
                   Read More →
@@ -82,15 +88,30 @@ export default function NewsPage() {
           ))}
         </div>
 
-        {/* View All Button */}
-        <div className="text-center mt-12">
-          <Link
-            href="/blog"
-            className="px-6 py-3 rounded-lg font-medium bg-[#1BA3E2] text-white hover:bg-[#148ec0] transition"
-          >
-            View All Articles
-          </Link>
-        </div>
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-4 mt-12">
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((p) => p - 1)}
+              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50"
+            >
+              ← Prev
+            </button>
+
+            <span className="font-medium text-gray-700 dark:text-gray-200">
+              Page {currentPage} of {totalPages}
+            </span>
+
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage((p) => p + 1)}
+              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50"
+            >
+              Next →
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
